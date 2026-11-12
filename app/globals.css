@@ -105,3 +105,12 @@
 .college-logo { display:block; width:112px; height:56px; object-fit:contain; object-position:right center; flex:0 0 auto; }
 @media (max-width:640px) { .topbar-right { gap:7px; } .college-logo { width:76px; height:42px; } .openpill { font-size:9px; } }
 @media print { .college-logo { display:none !important; } }
+
+
+.tablewrap { width:100%; overflow-x:auto; margin-top:12px; }
+.assessment-table { width:100%; border-collapse:collapse; font-size:12px; text-align:left; }
+.assessment-table th,.assessment-table td { padding:9px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.assessment-table th { background:var(--soft); color:var(--ink); font-weight:700; }
+.assessment-table td { color:var(--muted); }
+.actions { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+button:disabled { opacity:.45; cursor:not-allowed; }
