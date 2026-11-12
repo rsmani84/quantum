@@ -1,4 +1,4 @@
-# Quantum Chemistry Virtual Lab (Vercel / Next.js)
+# Particle in a 1-D & 3-D Box: Solving and Visualizing Wavefunctions
 
 A compact, Streamlit-style educational dashboard for particle-in-a-box quantum chemistry. This is a Next.js application (not a standalone HTML file and not a Streamlit/Python app).
 
