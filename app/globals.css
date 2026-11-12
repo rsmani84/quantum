@@ -94,3 +94,8 @@
 .report-author { margin:12px 0 16px; padding:12px 14px; border:1px solid #d9e0ea; border-left:3px solid #526b9c; border-radius:6px; line-height:1.55; font-size:11px; }
 .report-author strong { font-size:13px; }
 @media print { #print-report .report-author { break-inside:avoid; print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
+
+
+.site-credit { margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:11px; line-height:1.65; color:var(--muted); }
+.site-credit b { color:var(--ink); font-size:12px; }
+@media print { .site-credit { display:none !important; } }
