@@ -65,3 +65,27 @@
   #print-report .reportmetrics b { display:block; font-size:11pt; margin-top:4px; }
   #print-report .cloud3d { width:260px !important; max-height:230px; display:block; margin:8px auto; break-inside:avoid; }
 }
+
+
+/* Keep the 3D central probability map visible in browser print/PDF output. */
+#print-report .slice {
+  display:block !important;
+  width:260px !important;
+  max-width:100% !important;
+  height:auto !important;
+  min-height:220px !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  background:#ffffff !important;
+  border:1px solid #cbd5e1 !important;
+  print-color-adjust:exact !important;
+  -webkit-print-color-adjust:exact !important;
+}
+#print-report .slice rect,
+#print-report .slice path,
+#print-report .slice text {
+  visibility:visible !important;
+}
+@media print {
+  #print-report .slice { width:260px !important; height:250px !important; max-height:none !important; }
+}
