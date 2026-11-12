@@ -22,9 +22,9 @@ Open http://localhost:3000. For a production build, run `npm run build`.
 
 ## Included
 
-- Theory and equations for 1D and 3D infinite potential wells
+- Expandable, student-friendly 1D and 3D theory modules, with physical-model diagrams, boundary conditions, equation explanations, probability, normalization, nodes/nodal planes, degeneracy and worked examples
 - 1D energy calculator, wavefunction and probability-density plot
-- 3D rectangular-box energy calculator and central probability-density slice
+- 3D rectangular-box energy calculator and central probability-density slice, with live interpretation of quantum numbers and nodal planes
 - Energy analysis, guided experiments and 10-question self-assessment
 - Print / Save as PDF lab report
 - Local browser activity summary and JSON export
@@ -37,4 +37,4 @@ For institution-wide student tracking, verified assessments, or a faculty-only d
 
 ## Scientific note
 
-The 1D and 3D energies are calculated using SI constants and converted to eV. The plotted 1D curves show the correct state shapes; the probability curve is scaled for visual comparison. The 3D view is a central 2D slice of the probability density, not a full volumetric renderer.
+The 1D and 3D energies are calculated using SI constants and converted to eV. The plotted 1D curves show the correct state shapes; the probability curve is scaled for visual comparison. The 3D view is a central 2D slice of the probability density, not a full volumetric renderer. The expanded Theory tab explains this distinction and the current 3D state panel explains the central-slice behaviour, including why an even nᶻ gives a nodal central plane.
