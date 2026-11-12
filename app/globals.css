@@ -89,3 +89,8 @@
 @media print {
   #print-report .slice { width:260px !important; height:250px !important; max-height:none !important; }
 }
+
+
+.report-author { margin:12px 0 16px; padding:12px 14px; border:1px solid #d9e0ea; border-left:3px solid #526b9c; border-radius:6px; line-height:1.55; font-size:11px; }
+.report-author strong { font-size:13px; }
+@media print { #print-report .report-author { break-inside:avoid; print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
