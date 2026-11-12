@@ -36,9 +36,25 @@ function ProbabilityCloud({nx,ny,nz,lx=1,ly=1,lz=1}:{nx:number;ny:number;nz:numb
   </svg>;
 }
 function Slice({nx,ny,nz}:{nx:number;ny:number;nz:number}) {
-  const cells=[] as React.ReactNode[]; const N=24;
-  for(let j=0;j<N;j++) for(let i=0;i<N;i++) { const x=(i+.5)/N,y=(j+.5)/N,z=.5; const p=Math.sin(nx*Math.PI*x)**2*Math.sin(ny*Math.PI*y)**2*Math.sin(nz*Math.PI*z)**2; cells.push(<rect key={`${i}-${j}`} x={i*8} y={j*8} width="8.2" height="8.2" fill={`hsl(255 85% ${96-p*58}%)`}/>); }
-  return <svg viewBox="0 0 192 192" className="slice" aria-label="3D box probability density cross-section">{cells}</svg>;
+  const cells:React.ReactNode[]=[]; const N=24, cell=8;
+  const centralFactor=Math.sin(nz*Math.PI/2)**2;
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++) {
+    const x=(i+.5)/N,y=(j+.5)/N;
+    const p=Math.sin(nx*Math.PI*x)**2*Math.sin(ny*Math.PI*y)**2*centralFactor;
+    // Explicit RGB values print reliably and keep even-nz nodal planes visibly distinguishable.
+    const r=Math.round(255-175*p), g=Math.round(246-205*p), b=Math.round(239-185*p);
+    cells.push(<rect key={`${i}-${j}`} x={i*cell} y={j*cell} width={cell+.25} height={cell+.25} fill={`rgb(${r},${g},${b})`} stroke="#ffffff" strokeWidth=".35"/>);
+  }
+  return <svg viewBox="0 0 260 250" width="260" height="250" className="slice" role="img" aria-label={`Central xy probability density slice for state ${nx}, ${ny}, ${nz}`} style={{display:"block",width:"260px",maxWidth:"100%",height:"auto",background:"#fff"}}>
+    <rect x="0" y="0" width="192" height="192" fill="#fff" stroke="#64748b" strokeWidth="1"/>
+    {cells}
+    <path d="M0 200 H192 M0 200 V0" stroke="#334155" strokeWidth="1.2" fill="none"/>
+    <text x="96" y="220" textAnchor="middle" fontSize="11" fill="#111827">x position</text>
+    <text x="8" y="238" fontSize="10" fill="#111827">Central plane: z = Lz/2</text>
+    {nz%2===0&&<><rect x="18" y="72" width="156" height="42" rx="5" fill="#fff" stroke="#9f1239" strokeWidth="1.2"/><text x="96" y="89" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#9f1239">NODAL PLANE</text><text x="96" y="103" textAnchor="middle" fontSize="9" fill="#9f1239">Probability = 0 everywhere</text></>}
+    <text x="201" y="14" fontSize="9" fill="#111827">High</text><rect x="205" y="22" width="13" height="130" fill="url(#sliceScale)" stroke="#64748b" strokeWidth=".5"/><text x="201" y="164" fontSize="9" fill="#111827">Zero</text>
+    <defs><linearGradient id="sliceScale" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#500000"/><stop offset="100%" stopColor="#fff6ef"/></linearGradient></defs>
+  </svg>;
 }
 const questions = [
   {q:'What is the number of internal nodes in the nth 1D box eigenfunction?',a:['n','n − 1','n + 1','2n'],c:1,why:'The nth state has n − 1 internal nodes.'},
