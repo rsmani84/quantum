@@ -36,3 +36,23 @@
 .learn-summary p{margin:7px 0 0;color:#526078;font-size:13px;line-height:1.8}
 @media(max-width:800px){.learn-grid{grid-template-columns:1fr}.cards.two{grid-template-columns:1fr}}
 @media(max-width:650px){.learn-accordion-trigger{padding:14px;font-size:12px}.learn-accordion-body{padding:4px 13px 14px}.learn-equation{font-size:13px;padding:11px}.learn-intro>p{font-size:13px}}
+
+
+/* Printable report: equations, prediction explanations and graphs */
+@media print {
+  body { background:#fff !important; color:#111 !important; }
+  .shell { display:block !important; }
+  .sidebar,.topbar,.navitem,.primary,.smallbtn { display:none !important; }
+  .main { padding:0 !important; margin:0 !important; }
+  .stack,.panel { display:block !important; box-shadow:none !important; border:0 !important; }
+  #print-report { display:block !important; width:100% !important; color:#111 !important; }
+  #print-report h2 { font-size:21pt; margin-bottom:5pt; }
+  #print-report h3 { font-size:16pt; }
+  #print-report h4 { font-size:12pt; margin:14pt 0 5pt; break-after:avoid; }
+  #print-report p { font-size:10pt; line-height:1.45; margin:4pt 0; }
+  #print-report .graph { width:100% !important; max-height:260px; display:block; }
+  #print-report .slice { width:170px !important; height:170px !important; display:block; image-rendering:pixelated; }
+  #print-report .hint { font-size:9pt; color:#444 !important; }
+  #print-report svg { break-inside:avoid; }
+  #print-report h4, #print-report .graph, #print-report .slice { break-inside:avoid; }
+}
