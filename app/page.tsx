@@ -17,7 +17,7 @@ function Graph({n,L}: {n:number;L:number}) {
 }
 
 function Box3D({nx,ny,nz}:{nx:number;ny:number;nz:number}) {
-  const project=(x:number,y:number,z:number)=>({x:145+245*x+88*y,y:248-122*x-58*y-156*z});
+  const project=(x:number,y:number,z:number)=>({x:112+230*x+78*y,y:276-78*x-38*y-132*z});
   const P=(x:number,y:number,z:number)=>{const q=project(x,y,z);return `${q.x},${q.y}`;};
   const colour=(v:number)=>{
     const stops=[[0,42,24,92],[.25,44,108,224],[.5,26,190,210],[.75,246,205,70],[1,242,91,45]];
@@ -59,9 +59,16 @@ function Box3D({nx,ny,nz}:{nx:number;ny:number;nz:number}) {
   </svg>;
 }
 function Slice({nx,ny,nz}:{nx:number;ny:number;nz:number}) {
-  const cells=[] as React.ReactNode[]; const N=24;
-  for(let j=0;j<N;j++) for(let i=0;i<N;i++) { const x=(i+.5)/N,y=(j+.5)/N,z=.5; const p=Math.sin(nx*Math.PI*x)**2*Math.sin(ny*Math.PI*y)**2*Math.sin(nz*Math.PI*z)**2; cells.push(<rect key={`${i}-${j}`} x={i*8} y={j*8} width="8.2" height="8.2" fill={`hsl(255 85% ${96-p*58}%)`}/>); }
-  return <svg viewBox="0 0 192 192" className="slice" aria-label="3D box probability density cross-section">{cells}</svg>;
+  const cells:React.ReactNode[]=[]; const N=48;
+  // Choose a z-plane at an antinode so even nz states do not produce an entirely blank central slice.
+  const z=1/(2*nz);
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++) {
+    const x=(i+.5)/N,y=(j+.5)/N;
+    const prob=Math.sin(nx*Math.PI*x)**2*Math.sin(ny*Math.PI*y)**2*Math.sin(nz*Math.PI*z)**2;
+    const hue=252-220*prob, light=96-48*prob;
+    cells.push(<rect key={`${i}-${j}`} x={i*4} y={j*4} width="4.15" height="4.15" fill={`hsl(${hue} 88% ${light}%)`}/>);
+  }
+  return <svg viewBox="0 0 192 192" className="slice" role="img" aria-label={`Probability density cross-section at z equals L over ${2*nz} for state ${nx}, ${ny}, ${nz}`}>{cells}</svg>;
 }
 const questions = [
   {q:'What is the number of internal nodes in the nth 1D box eigenfunction?',a:['n','n − 1','n + 1','2n'],c:1,why:'The nth state has n − 1 internal nodes.'},
