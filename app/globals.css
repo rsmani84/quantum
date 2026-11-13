@@ -64,3 +64,6 @@
 
 /* Refined colour 3D quantum probability-density cloud */
 .box3d-figure{display:block;width:100%;max-width:700px;height:auto;margin:14px auto 10px;background:radial-gradient(ellipse at 48% 42%,#fff 0%,#f3f6ff 68%,#e9efff 100%);border:1px solid #dbe4f5;border-radius:16px;box-shadow:0 8px 24px rgba(38,59,104,.08)}.reportpreview .box3d-figure{max-width:580px;max-height:360px}.reportpreview .box3d-figure text{font-family:Arial,sans-serif}@media print{.box3d-figure{break-inside:avoid;max-height:320px;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+/* Responsive, fully visible quantum probability figures */
+.box3d-figure{width:100%;max-width:760px;aspect-ratio:560/340;height:auto;overflow:visible}.slicearea{display:grid;grid-template-columns:minmax(170px,230px) minmax(0,1fr);gap:24px;align-items:center}.slice{width:100%!important;height:auto!important;max-width:230px!important;aspect-ratio:1;image-rendering:auto}.slicearea>div{min-width:0}.slicearea p{max-width:none}@media(max-width:650px){.slicearea{grid-template-columns:1fr}.slice{width:min(100%,230px)!important}.box3d-figure{max-width:100%}}
